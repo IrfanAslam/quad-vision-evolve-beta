@@ -43,15 +43,31 @@ const Navbar = () => {
           : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+     <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
-          <motion.img 
-            src="/lovable-uploads/af8076ca-9c98-479d-a64f-cb9037f1f649.png" 
-            alt="QuadVis Logo" 
-            className="h-12 w-auto" 
-            whileHover={{ scale: 1.05 }}
+          {/* Logo element with fallback to text-based logo if image fails */}
+          <motion.div 
+            className="relative flex items-center space-x-4"
+            whileHover={{ scale: 1.50 }}
             transition={{ type: "spring", stiffness: 300 }}
-          />
+          >
+            {/* First try with proper image */}
+            <img 
+              src="/src/assets/logo-new.png" 
+              alt="QuadVis Logo"
+              className="h-12 w-auto" 
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = 'none';
+                // We'll show the text logo via CSS when image fails
+              }}
+            />
+            
+            {/* Colorful text-based logo as fallback */}
+            <div className="text-white text-2xl font-bold flex items-center">
+              <span className="text-blue-400">Quad</span>
+              <span className="text-quadvis-orange">Vis</span>
+            </div>
+          </motion.div>
         </Link>
 
         {/* Desktop Navigation */}

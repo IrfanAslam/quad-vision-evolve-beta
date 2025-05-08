@@ -9,7 +9,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-2 mb-6">
               <img 
-                src="/lovable-uploads/77223987-a581-48ba-ad61-470bd73d6c7f.png" 
+                src="/src/assets/logo.png"
                 alt="QuadVis Logo" 
                 className="h-10 w-auto" 
               />

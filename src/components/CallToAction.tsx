@@ -64,7 +64,7 @@ const CallToAction = () => {
               >
                 <div className="h-full w-full rounded-full bg-black/60 flex items-center justify-center p-8">
                   <img 
-                    src="/lovable-uploads/77223987-a581-48ba-ad61-470bd73d6c7f.png" 
+                    src="/src/assets/logo.png"
                     alt="QuadVis" 
                     className="max-w-full h-auto"
                   />
