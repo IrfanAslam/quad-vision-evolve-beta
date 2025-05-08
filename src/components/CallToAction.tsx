@@ -1,5 +1,6 @@
 
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const CallToAction = () => {
   return (
@@ -12,15 +13,19 @@ const CallToAction = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Ready to Transform Your <span className="gradient-text">Data Visualization</span>?
+                Ready to Transform Your <span className="gradient-text">Digital Experience</span>?
               </h2>
               <p className="text-gray-300 mb-8">
-                Let's discuss how QuadVis Technologies can help you unlock the full potential of your data with our cutting-edge visualization solutions.
+                Let's discuss how QuadVis Technologies can help you unlock the full potential of your ideas with our cutting-edge development solutions.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="quad-button">Schedule a Demo</Button>
-                <Button variant="outline" className="quad-button-outline">Contact Us</Button>
+                <Link to="/contact">
+                  <Button className="quad-button">Schedule a Demo</Button>
+                </Link>
+                <Link to="/contact">
+                  <Button variant="outline" className="quad-button-outline">Contact Us</Button>
+                </Link>
               </div>
             </div>
             

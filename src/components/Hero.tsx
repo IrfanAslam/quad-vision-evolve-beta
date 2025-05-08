@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -25,11 +26,14 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="quad-button group">
-              Explore Our Solutions
-              <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="outline" className="quad-button-outline">
+            <Link to="/services">
+              <Button className="quad-button group">
+                Explore Our Solutions
+                <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            <Button variant="outline" className="quad-button-outline flex items-center gap-2">
+              <Play size={18} />
               Watch Demo
             </Button>
           </div>

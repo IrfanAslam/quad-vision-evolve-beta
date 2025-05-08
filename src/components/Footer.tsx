@@ -57,19 +57,20 @@ const Footer = () => {
             <h3 className="text-white font-bold mb-6">Services</h3>
             <ul className="space-y-4">
               {[
-                'Advanced Visualization',
-                'Intelligent Analytics',
-                'Digital Transformation',
-                'Custom Development',
-                'Technical Consulting',
+                'Web Development',
+                'E-Commerce Solutions',
+                'Game Development',
+                'XR & Immersive Experiences',
+                'Content Creation',
+                'QA Automation',
               ].map((service) => (
                 <li key={service}>
-                  <a 
-                    href="#services"
+                  <Link 
+                    to="/services"
                     className="text-gray-400 hover:text-quadvis-orange transition-colors"
                   >
                     {service}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -84,12 +85,13 @@ const Footer = () => {
               </li>
               <li>
                 <strong className="text-quadvis-gray">Phone:</strong><br />
-                +1 (555) 123-4567
+                +92 321 7741575<br />
+                +92 331 4585951
               </li>
               <li>
                 <strong className="text-quadvis-gray">Address:</strong><br />
-                123 Innovation Drive<br />
-                Tech Valley, CA 94103
+                722 D Block Johar Town<br />
+                Lahore, Pakistan 54782
               </li>
             </ul>
           </div>
@@ -103,13 +105,13 @@ const Footer = () => {
             
             <div className="flex gap-6">
               {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
-                <a 
+                <Link 
                   key={item}
-                  href="#"
+                  to="#"
                   className="text-gray-500 hover:text-quadvis-orange text-sm"
                 >
                   {item}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
