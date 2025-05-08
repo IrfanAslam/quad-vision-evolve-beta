@@ -1,0 +1,122 @@
+
+import { Link } from "react-router-dom";
+
+const Footer = () => {
+  return (
+    <footer className="bg-black pt-16 pb-8">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+          <div>
+            <div className="flex items-center gap-2 mb-6">
+              <img 
+                src="/lovable-uploads/77223987-a581-48ba-ad61-470bd73d6c7f.png" 
+                alt="QuadVis Logo" 
+                className="h-10 w-auto" 
+              />
+              <span className="font-bold text-xl text-white">QuadVis</span>
+            </div>
+            <p className="text-gray-400 mb-6">
+              Four Fold Innovation, One Digital Vision. Transforming data into actionable insights through advanced visualization technology.
+            </p>
+            <div className="flex gap-4">
+              {['facebook', 'twitter', 'linkedin', 'instagram'].map((social) => (
+                <a 
+                  key={social}
+                  href={`#${social}`}
+                  className="h-10 w-10 rounded-full bg-quadvis-dark flex items-center justify-center hover:bg-quadvis-blue/20 transition-colors"
+                >
+                  <span className="text-gray-400"></span>
+                </a>
+              ))}
+            </div>
+          </div>
+          
+          <div>
+            <h3 className="text-white font-bold mb-6">Quick Links</h3>
+            <ul className="space-y-4">
+              {[
+                { label: 'Home', path: '/' },
+                { label: 'About Us', path: '/about' },
+                { label: 'Services', path: '/services' },
+                { label: 'Case Studies', path: '/case-studies' },
+                { label: 'Contact', path: '/contact' },
+              ].map((link) => (
+                <li key={link.label}>
+                  <Link 
+                    to={link.path}
+                    className="text-gray-400 hover:text-quadvis-orange transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="text-white font-bold mb-6">Services</h3>
+            <ul className="space-y-4">
+              {[
+                'Advanced Visualization',
+                'Intelligent Analytics',
+                'Digital Transformation',
+                'Custom Development',
+                'Technical Consulting',
+              ].map((service) => (
+                <li key={service}>
+                  <a 
+                    href="#services"
+                    className="text-gray-400 hover:text-quadvis-orange transition-colors"
+                  >
+                    {service}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="text-white font-bold mb-6">Contact Us</h3>
+            <ul className="space-y-4 text-gray-400">
+              <li>
+                <strong className="text-quadvis-gray">Email:</strong><br />
+                info@quadvis-tech.com
+              </li>
+              <li>
+                <strong className="text-quadvis-gray">Phone:</strong><br />
+                +1 (555) 123-4567
+              </li>
+              <li>
+                <strong className="text-quadvis-gray">Address:</strong><br />
+                123 Innovation Drive<br />
+                Tech Valley, CA 94103
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div className="border-t border-gray-800 pt-8 mt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="text-gray-500 text-sm mb-4 md:mb-0">
+              © {new Date().getFullYear()} QuadVis Technologies. All rights reserved.
+            </div>
+            
+            <div className="flex gap-6">
+              {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
+                <a 
+                  key={item}
+                  href="#"
+                  className="text-gray-500 hover:text-quadvis-orange text-sm"
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
