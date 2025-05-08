@@ -1,64 +1,66 @@
 
+import { motion } from "framer-motion";
+
 const AboutContent = () => {
   return (
     <div>
       <div className="mb-20">
-        <h2 className="text-3xl font-bold mb-8 text-center">Our Leadership Team</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <h2 className="text-4xl font-bold mb-8 text-center">Our Leadership Team</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
           {[
             {
               name: "Irfan Aslam",
               position: "Founder & CEO",
-              bio: "Visionary tech leader with extensive experience in software development and digital transformation, passionate about creating innovative solutions.",
+              bio: "Visionary tech leader with extensive experience in software development and digital transformation, passionate about creating innovative solutions that drive business growth and enhance user experiences.",
               image: "/placeholder.svg"
             },
             {
-              name: "Sarah Ahmad",
-              position: "CTO",
-              bio: "Technical genius with deep expertise in web technologies, game development, and immersive experiences, leading our engineering teams.",
-              image: "/placeholder.svg"
-            },
-            {
-              name: "Michael Chen",
-              position: "Creative Director",
-              bio: "Award-winning designer focused on creating exceptional user experiences and stunning visuals for all our digital products.",
+              name: "Suleiman Raza",
+              position: "Creative Director & QA Expert",
+              bio: "Multifaceted creative professional with expertise in quality assurance, content creation, and user experience design. Passionate about delivering exceptional digital experiences that delight users.",
               image: "/placeholder.svg"
             }
           ].map((member, index) => (
-            <div key={index} className="quad-card text-center">
-              <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 bg-gradient-to-br from-quadvis-blue/30 to-quadvis-orange/30 p-1">
+            <motion.div 
+              key={index} 
+              className="quad-card text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+            >
+              <div className="w-36 h-36 rounded-full overflow-hidden mx-auto mb-6 bg-gradient-to-br from-quadvis-blue/30 to-quadvis-orange/30 p-1">
                 <div className="w-full h-full rounded-full overflow-hidden bg-quadvis-dark">
                   <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
                 </div>
               </div>
-              <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-              <p className="text-quadvis-orange mb-3">{member.position}</p>
-              <p className="text-gray-300">{member.bio}</p>
-            </div>
+              <h3 className="text-2xl font-bold mb-1">{member.name}</h3>
+              <p className="text-quadvis-orange mb-3 text-lg">{member.position}</p>
+              <p className="text-gray-300 text-lg">{member.bio}</p>
+            </motion.div>
           ))}
         </div>
       </div>
       
       <div className="mb-20">
-        <h2 className="text-3xl font-bold mb-8 text-center">Our Mission</h2>
+        <h2 className="text-4xl font-bold mb-8 text-center">Our Mission</h2>
         <div className="quad-card">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div>
-              <h3 className="text-2xl font-bold mb-4">What We Do</h3>
-              <p className="text-gray-300 mb-4">
+              <h3 className="text-3xl font-bold mb-4">What We Do</h3>
+              <p className="text-xl text-gray-300 mb-4">
                 At QuadVis Technologies, we create digital solutions that solve real-world problems. We bridge the gap between complex technology and human needs, delivering products that are both innovative and intuitive.
               </p>
-              <p className="text-gray-300">
+              <p className="text-xl text-gray-300">
                 Our services span the full spectrum of digital development, from web and e-commerce solutions to cutting-edge game development and immersive XR experiences. Whatever your digital challenge, we have the expertise to meet it.
               </p>
             </div>
             
             <div>
-              <h3 className="text-2xl font-bold mb-4">Why We Do It</h3>
-              <p className="text-gray-300 mb-4">
+              <h3 className="text-3xl font-bold mb-4">Why We Do It</h3>
+              <p className="text-xl text-gray-300 mb-4">
                 We believe that technology should enhance human experience, not complicate it. Our mission is to democratize access to advanced digital solutions, making powerful tools and experiences available to organizations of all sizes.
               </p>
-              <p className="text-gray-300">
+              <p className="text-xl text-gray-300">
                 We're passionate about pushing the boundaries of what's possible in digital spaces while ensuring that our solutions remain accessible, usable, and valuable to the people who interact with them.
               </p>
             </div>
@@ -67,7 +69,7 @@ const AboutContent = () => {
       </div>
       
       <div className="mb-20">
-        <h2 className="text-3xl font-bold mb-8 text-center">Our Approach</h2>
+        <h2 className="text-4xl font-bold mb-8 text-center">Our Approach</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
@@ -91,11 +93,17 @@ const AboutContent = () => {
               description: "We continuously refine our solutions to maximize performance and results."
             }
           ].map((step, index) => (
-            <div key={index} className="quad-card">
-              <div className="text-3xl font-bold text-quadvis-orange mb-2">{step.number}</div>
-              <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-              <p className="text-gray-300">{step.description}</p>
-            </div>
+            <motion.div 
+              key={index} 
+              className="quad-card"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
+            >
+              <div className="text-4xl font-bold text-quadvis-orange mb-2">{step.number}</div>
+              <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
+              <p className="text-lg text-gray-300">{step.description}</p>
+            </motion.div>
           ))}
         </div>
       </div>

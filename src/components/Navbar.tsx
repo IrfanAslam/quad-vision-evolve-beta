@@ -39,27 +39,19 @@ const Navbar = () => {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-quadvis-dark/95 backdrop-blur-lg shadow-lg shadow-quadvis-blue/10' 
+          ? 'bg-gradient-to-r from-quadvis-blue/30 to-quadvis-orange/30 backdrop-blur-md shadow-lg' 
           : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-3">
           <motion.img 
-            src="/lovable-uploads/77223987-a581-48ba-ad61-470bd73d6c7f.png" 
+            src="/lovable-uploads/af8076ca-9c98-479d-a64f-cb9037f1f649.png" 
             alt="QuadVis Logo" 
-            className="h-10 w-auto" 
+            className="h-12 w-auto" 
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           />
-          <motion.span 
-            className="font-bold text-xl text-white"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            QuadVis
-          </motion.span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -79,7 +71,7 @@ const Navbar = () => {
             >
               <Link 
                 to={item.path} 
-                className={`transition-colors relative ${
+                className={`transition-colors relative text-lg font-medium ${
                   isActive(item.path) 
                     ? 'text-quadvis-orange' 
                     : 'text-white hover:text-quadvis-orange'
@@ -104,7 +96,7 @@ const Navbar = () => {
           transition={{ delay: 0.6 }}
         >
           <Link to="/contact">
-            <Button className="quad-button">Get Started</Button>
+            <Button className="quad-button text-lg px-6 py-2.5">Get Started</Button>
           </Link>
         </motion.div>
         
@@ -114,14 +106,14 @@ const Navbar = () => {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           whileTap={{ scale: 0.95 }}
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </motion.button>
       </div>
       
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
         <motion.div 
-          className="md:hidden bg-quadvis-dark/95 backdrop-blur-lg p-4"
+          className="md:hidden bg-gradient-to-r from-quadvis-blue/40 to-quadvis-orange/40 backdrop-blur-lg p-5"
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
@@ -142,7 +134,7 @@ const Navbar = () => {
               >
                 <Link 
                   to={item.path} 
-                  className={`p-2 block ${
+                  className={`p-2 block text-lg font-medium ${
                     isActive(item.path) 
                       ? 'text-quadvis-orange' 
                       : 'text-white hover:text-quadvis-orange'
@@ -154,7 +146,7 @@ const Navbar = () => {
             ))}
           </nav>
           <Link to="/contact" className="block">
-            <Button className="quad-button w-full">Get Started</Button>
+            <Button className="quad-button w-full text-lg py-2.5">Get Started</Button>
           </Link>
         </motion.div>
       )}
