@@ -2,7 +2,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
-	darkMode: ["class"],
+	darkMode: ["class", ".dark"],
 	content: [
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
@@ -65,7 +65,7 @@ export default {
 				},
 				quadvis: {
 					blue: '#0E4C92',
-					orange: '#FF5733',
+					orange: '#D84315', /* Decreased sharpness of orange from #FF5733 to #D84315 */
 					dark: '#1A1F2C',
 					light: '#F8F9FA',
 					gray: '#8A898C'

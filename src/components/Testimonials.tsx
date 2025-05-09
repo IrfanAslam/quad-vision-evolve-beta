@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const testimonials = [
   {
@@ -61,20 +62,45 @@ const Testimonials = () => {
   }, []);
   
   return (
-    <section className="py-20 bg-black relative overflow-hidden">
+    <motion.section 
+      className="py-20 bg-black relative overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
       {/* Background elements */}
       <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-quadvis-blue/10 blur-3xl"></div>
       <div className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full bg-quadvis-orange/10 blur-3xl"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="section-title">What Our <span className="gradient-text">Clients Say</span></h2>
-          <p className="section-subtitle">
+          <motion.h2 
+            className="section-title"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            What Our <span className="gradient-text">Clients Say</span>
+          </motion.h2>
+          <motion.p 
+            className="section-subtitle"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             Hear directly from organizations that have experienced the transformative impact of QuadVis technologies.
-          </p>
+          </motion.p>
         </div>
         
-        <div className="max-w-4xl mx-auto relative">
+        <motion.div 
+          className="max-w-4xl mx-auto relative"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
           <div className="overflow-hidden relative">
             <div 
               className={`transition-transform duration-500 ease-out flex`}
@@ -140,7 +166,7 @@ const Testimonials = () => {
               <ChevronRight className="h-5 w-5" />
             </button>
           </div>
-        </div>
+        </motion.div>
         
         <div className="mt-20 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
           {[...Array(6)].map((_, i) => (
@@ -150,7 +176,7 @@ const Testimonials = () => {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

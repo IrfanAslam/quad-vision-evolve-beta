@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ArrowRight, Rocket, Zap, Target } from "lucide-react";
 
 const CallToAction = () => {
   return (
@@ -46,7 +47,10 @@ const CallToAction = () => {
                 viewport={{ once: true }}
               >
                 <Link to="/contact">
-                  <Button className="quad-button">Schedule a Demo</Button>
+                  <Button className="quad-button">
+                    Get Started Today 
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
                 </Link>
                 <Link to="/contact">
                   <Button variant="outline" className="quad-button-outline">Contact Us</Button>
@@ -56,19 +60,48 @@ const CallToAction = () => {
             
             <div className="relative">
               <motion.div 
-                className="aspect-square max-w-xs mx-auto rounded-full bg-gradient-to-br from-quadvis-blue/30 to-quadvis-orange/30 p-1"
+                className="quad-card p-6"
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.6, type: "spring" }}
+                transition={{ duration: 0.6, type: "spring", staggerChildren: 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="h-full w-full rounded-full bg-black/60 flex items-center justify-center p-8">
-                  <img 
-                    src="/src/assets/logo.png"
-                    alt="QuadVis" 
-                    className="max-w-full h-auto"
-                  />
-                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Why Choose QuadVis</h3>
+                
+                {[
+                  {
+                    icon: <Rocket className="text-quadvis-blue" />,
+                    title: "Innovative Solutions",
+                    description: "Cutting-edge technologies for modern challenges"
+                  },
+                  {
+                    icon: <Target className="text-quadvis-orange" />,
+                    title: "Focused Approach",
+                    description: "Targeted strategies for your specific needs"
+                  },
+                  {
+                    icon: <Zap className="text-quadvis-blue" />,
+                    title: "Rapid Development",
+                    description: "Fast turnaround without sacrificing quality"
+                  }
+                ].map((item, index) => (
+                  <motion.div 
+                    key={index}
+                    className="flex items-start gap-4 mb-4 last:mb-0"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 + (index * 0.1) }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="p-2 bg-black/30 rounded-lg">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-white">{item.title}</h4>
+                      <p className="text-sm text-gray-400">{item.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
               </motion.div>
               
               {/* Animated rings */}

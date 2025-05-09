@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -106,24 +107,28 @@ const Navbar = () => {
         </nav>
         
         <motion.div 
-          className="hidden md:block"
+          className="hidden md:flex items-center gap-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
         >
+          <ThemeToggle />
           <Link to="/contact">
             <Button className="quad-button text-lg px-6 py-2.5">Get Started</Button>
           </Link>
         </motion.div>
         
         {/* Mobile Menu Button */}
-        <motion.button 
-          className="md:hidden text-white"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          whileTap={{ scale: 0.95 }}
-        >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </motion.button>
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <motion.button 
+            className="text-white"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            whileTap={{ scale: 0.95 }}
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </motion.button>
+        </div>
       </div>
       
       {/* Mobile Navigation */}
