@@ -1,51 +1,9 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 222 25% 13%;
-    --foreground: 210 40% 98%;
-
-    --card: 222 25% 13%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222 25% 13%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 214 70% 31%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 15 80% 50%; /* Decreased sharpness of orange */
-    --secondary-foreground: 222 25% 13%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 15 80% 50%; /* Decreased sharpness of orange */
-    --accent-foreground: 222 25% 13%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 214 70% 31%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 15 80% 50%; /* Decreased sharpness of orange */
-    --sidebar-primary-foreground: 222 25% 13%;
-    --sidebar-accent: 214 60% 40%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 214 60% 40%;
-    --sidebar-ring: 15 80% 50%; /* Decreased sharpness of orange */
-  }
-
-  .light {
     --background: 0 0% 100%;
     --foreground: 222 25% 13%;
 
@@ -58,13 +16,13 @@
     --primary: 214 70% 31%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 15 80% 50%; /* Decreased sharpness of orange */
+    --secondary: 15 80% 50%; 
     --secondary-foreground: 0 0% 100%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 15 80% 50%; /* Decreased sharpness of orange */
+    --accent: 15 80% 50%; 
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -76,12 +34,51 @@
 
     --sidebar-background: 214 70% 31%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 15 80% 50%; /* Decreased sharpness of orange */
+    --sidebar-primary: 15 80% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 214 60% 40%;
     --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 214 60% 40%;
-    --sidebar-ring: 15 80% 50%; /* Decreased sharpness of orange */
+    --sidebar-ring: 15 80% 50%;
+  }
+
+  .dark {
+    --background: 222 25% 13%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 25% 13%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 25% 13%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 214 70% 31%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 15 80% 50%;
+    --secondary-foreground: 222 25% 13%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 15 80% 50%;
+    --accent-foreground: 222 25% 13%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+
+    --sidebar-background: 214 70% 31%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 15 80% 50%;
+    --sidebar-primary-foreground: 222 25% 13%;
+    --sidebar-accent: 214 60% 40%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 214 60% 40%;
+    --sidebar-ring: 15 80% 50%;
   }
 }
 
@@ -91,13 +88,13 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
     font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;
   }
   
   ::selection {
-    @apply bg-quadvis-orange/30 text-white;
+    @apply bg-quadvis-orange/30 text-foreground;
   }
 }
 
@@ -123,7 +120,7 @@
   }
   
   .section-subtitle {
-    @apply text-lg text-quadvis-gray mb-10 max-w-2xl mx-auto;
+    @apply text-lg text-muted-foreground mb-10 max-w-2xl mx-auto;
   }
   
   /* New animation utilities */

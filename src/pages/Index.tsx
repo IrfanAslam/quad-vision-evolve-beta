@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import About from "@/components/About";
 import CaseStudies from "@/components/CaseStudies";
-import Testimonials from "@/components/Testimonials";
+import CoreFeatures from "@/components/CoreFeatures"; 
 import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
@@ -14,7 +14,7 @@ const Index = () => {
   return (
     <PageTransition>
       <motion.div 
-        className="min-h-screen bg-background text-foreground"
+        className="min-h-screen bg-background text-foreground transition-colors duration-300"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -53,7 +53,7 @@ const Index = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.6 }}
         >
-          <Testimonials />
+          <CoreFeatures />
         </motion.div>
         <motion.div
           initial={{ opacity: 0 }}
