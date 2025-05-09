@@ -27,23 +27,20 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   // Effect to update document classes and localStorage when theme changes
   useEffect(() => {
+    const root = document.documentElement;
+    
     // Remove both theme classes first
-    document.documentElement.classList.remove("dark", "light");
-    // Add the current theme class
-    document.documentElement.classList.add(theme);
+    root.classList.remove("dark", "light");
+    
+    // Add the current theme class to html element
+    root.classList.add(theme);
+    
+    // Update data-theme attribute which some libraries use
+    root.setAttribute("data-theme", theme);
+    
     // Store in localStorage
     localStorage.setItem("theme", theme);
     
-    // Apply theme to document body as well to ensure full coverage
-    if (theme === "dark") {
-      document.body.classList.add("dark");
-      document.body.classList.remove("light");
-    } else {
-      document.body.classList.add("light");
-      document.body.classList.remove("dark");
-    }
-    
-    // Log for debugging
     console.log("Theme changed to:", theme);
   }, [theme]);
 
