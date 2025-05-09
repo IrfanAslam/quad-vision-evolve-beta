@@ -14,7 +14,7 @@ const Index = () => {
   return (
     <PageTransition>
       <motion.div 
-        className="min-h-screen bg-quadvis-dark text-white"
+        className="min-h-screen bg-background text-foreground"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}

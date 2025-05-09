@@ -14,16 +14,28 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
+    // Check if theme is saved in localStorage
     const savedTheme = localStorage.getItem("theme") as Theme;
-    if (savedTheme) {
+    if (savedTheme && (savedTheme === "dark" || savedTheme === "light")) {
       setTheme(savedTheme);
+    } else {
+      // Use system preference as fallback
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setTheme(prefersDark ? "dark" : "light");
     }
   }, []);
 
+  // Effect to update document classes and localStorage when theme changes
   useEffect(() => {
-    document.documentElement.classList.remove("light", "dark");
+    // Remove both theme classes first
+    document.documentElement.classList.remove("dark", "light");
+    // Add the current theme class
     document.documentElement.classList.add(theme);
+    // Store in localStorage
     localStorage.setItem("theme", theme);
+    
+    // Log for debugging
+    console.log("Theme changed to:", theme);
   }, [theme]);
 
   const toggleTheme = () => {
