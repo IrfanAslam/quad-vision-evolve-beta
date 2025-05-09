@@ -1,47 +1,45 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, CheckCircle, Shield, Zap, Users, Lightbulb, LineChart } from 'lucide-react';
+import { ChevronRight, PenTool, Code, BarChart, Database, Cloud, ShieldCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const features = [
   {
-    icon: <Lightbulb className="text-quadvis-orange" />,
-    title: "Innovative Approaches",
-    description: "We combine creativity with technical expertise to deliver solutions that stand out from the competition."
+    icon: <PenTool className="text-quadvis-orange" />,
+    title: "UI/UX Design",
+    description: "Create intuitive and engaging user experiences with our expert design services."
   },
   {
-    icon: <LineChart className="text-quadvis-blue" />,
-    title: "Data-Driven Insights",
-    description: "Our visualization tools transform complex data into actionable intelligence for your business."
+    icon: <Code className="text-quadvis-blue" />,
+    title: "Full-Stack Development",
+    description: "Build robust applications with cutting-edge front and back-end technologies."
   },
   {
-    icon: <Zap className="text-quadvis-orange" />,
-    title: "Performance Optimized",
-    description: "Every solution we build is engineered for speed, scalability, and optimal user experience."
+    icon: <BarChart className="text-quadvis-orange" />,
+    title: "Data Visualization",
+    description: "Transform complex data into clear, actionable insights through powerful visual tools."
   },
   {
-    icon: <Shield className="text-quadvis-blue" />,
-    title: "Enterprise Security",
-    description: "We implement robust security measures to protect your data and maintain compliance."
+    icon: <Database className="text-quadvis-blue" />,
+    title: "Database Solutions",
+    description: "Design efficient, scalable database architectures for optimal data management."
   },
   {
-    icon: <CheckCircle className="text-quadvis-orange" />,
-    title: "Quality Assurance",
-    description: "Rigorous testing procedures ensure our deliverables meet the highest quality standards."
+    icon: <Cloud className="text-quadvis-orange" />,
+    title: "Cloud Integration",
+    description: "Seamlessly deploy and manage your applications with modern cloud infrastructure."
   },
   {
-    icon: <Users className="text-quadvis-blue" />,
-    title: "Client Collaboration",
-    description: "We work closely with you throughout the development process to ensure your vision becomes reality."
+    icon: <ShieldCheck className="text-quadvis-blue" />,
+    title: "Security Implementation",
+    description: "Protect your digital assets with our comprehensive security protocols."
   }
 ];
 
 const Testimonials = () => {
-  const [expandedFeature, setExpandedFeature] = useState<number | null>(null);
-  
-  const toggleFeature = (index: number) => {
-    setExpandedFeature(expandedFeature === index ? null : index);
-  };
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   
   return (
     <motion.section 
@@ -63,7 +61,7 @@ const Testimonials = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            Why Choose <span className="gradient-text">QuadVis</span>
+            Our <span className="gradient-text">Core Services</span>
           </motion.h2>
           <motion.p 
             className="section-subtitle"
@@ -72,7 +70,7 @@ const Testimonials = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Discover the core strengths that set our solutions apart and drive exceptional results.
+            Comprehensive solutions to power your digital transformation journey
           </motion.p>
         </div>
         
@@ -80,60 +78,49 @@ const Testimonials = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3, staggerChildren: 0.1 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
           viewport={{ once: true }}
         >
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="quad-card bg-gradient-to-b from-quadvis-dark to-black/90 border border-quadvis-blue/20 hover:border-quadvis-orange/30"
+              className="quad-card relative overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ y: -5 }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
             >
-              <div className="p-6">
+              {/* Animated gradient border */}
+              <div className="absolute inset-0 bg-gradient-to-r from-quadvis-blue/30 to-quadvis-orange/30 opacity-0 hover:opacity-100 transition-opacity duration-300" style={{ borderRadius: "inherit" }}></div>
+              
+              <div className="p-6 relative z-10">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-black/40">
-                      {feature.icon}
-                    </div>
-                    <h3 className="text-xl font-bold text-white">{feature.title}</h3>
+                  <div className="p-2 rounded-lg bg-black/40">
+                    {feature.icon}
                   </div>
-                  <button 
-                    onClick={() => toggleFeature(index)}
-                    className="text-quadvis-gray hover:text-white transition-colors"
-                  >
-                    <ChevronDown 
-                      className={`transition-transform duration-300 ${expandedFeature === index ? 'rotate-180' : ''}`} 
-                    />
-                  </button>
                 </div>
                 
-                <div 
-                  className={`overflow-hidden transition-all duration-300 ${
-                    expandedFeature === index ? 'max-h-40' : 'max-h-0'
-                  }`}
+                <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
+                <p className="text-quadvis-gray mb-4">{feature.description}</p>
+                
+                <motion.div 
+                  className="mt-2"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <p className="text-quadvis-gray">{feature.description}</p>
-                </div>
+                  <Link to="/services">
+                    <Button variant="ghost" className="text-quadvis-orange hover:text-quadvis-orange/90 p-0 flex items-center">
+                      Learn more <ChevronRight className="h-4 w-4 ml-1" />
+                    </Button>
+                  </Link>
+                </motion.div>
               </div>
             </motion.div>
           ))}
-        </motion.div>
-        
-        <motion.div 
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-xl text-quadvis-gray">
-            <span className="text-white">Four-fold approach</span> to visualization excellence: 
-            <span className="gradient-text"> Insight. Innovation. Implementation. Impact.</span>
-          </p>
         </motion.div>
       </div>
     </motion.section>
