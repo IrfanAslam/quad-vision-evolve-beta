@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { toast } from '@/hooks/use-toast';
+import { useTheme } from "@/hooks/use-theme";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const ContactForm = () => {
     message: ''
   });
   
+  const { theme } = useTheme();
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -49,7 +51,7 @@ const ContactForm = () => {
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label htmlFor="name" className="block text-gray-300 mb-1">Your Name *</label>
+          <label htmlFor="name" className={`block mb-1 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>Your Name *</label>
           <input
             type="text"
             id="name"
@@ -57,12 +59,13 @@ const ContactForm = () => {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full rounded-md bg-quadvis-dark border border-gray-700 p-3 text-white focus:border-quadvis-orange focus:outline-none"
+            className={`w-full rounded-md  border border-gray-700 p-3 focus:border-quadvis-orange focus:outline-none 
+              ${theme === 'dark' ? 'text-white bg-quadvis-dark' : 'text-gray-500 bg-quadvis-light'}`}
           />
         </div>
         
         <div>
-          <label htmlFor="email" className="block text-gray-300 mb-1">Your Email *</label>
+          <label htmlFor="email" className={`block mb-1 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>Your Email *</label>
           <input
             type="email"
             id="email"
@@ -70,33 +73,36 @@ const ContactForm = () => {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full rounded-md bg-quadvis-dark border border-gray-700 p-3 text-white focus:border-quadvis-orange focus:outline-none"
+            className={`w-full rounded-md border border-gray-700 p-3 focus:border-quadvis-orange focus:outline-none
+              ${theme === 'dark' ? 'text-white bg-quadvis-dark' : 'text-gray-500 bg-quadvis-light'}`}
           />
         </div>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label htmlFor="phone" className="block text-gray-300 mb-1">Phone Number</label>
+          <label htmlFor="phone" className={`block mb-1 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>Phone Number</label>
           <input
             type="tel"
             id="phone"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full rounded-md bg-quadvis-dark border border-gray-700 p-3 text-white focus:border-quadvis-orange focus:outline-none"
+            className={`w-full rounded-md border border-gray-700 p-3 focus:border-quadvis-orange focus:outline-none
+              ${theme === 'dark' ? 'text-white bg-quadvis-dark' : 'text-gray-500 bg-quadvis-light'}`}
           />
         </div>
         
         <div>
-          <label htmlFor="subject" className="block text-gray-300 mb-1">Subject *</label>
+          <label htmlFor="subject" className={`block mb-1 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>Subject *</label>
           <select
             id="subject"
             name="subject"
             value={formData.subject}
             onChange={handleChange}
             required
-            className="w-full rounded-md bg-quadvis-dark border border-gray-700 p-3 text-white focus:border-quadvis-orange focus:outline-none"
+            className={`w-full rounded-md border border-gray-700 p-3 focus:border-quadvis-orange focus:outline-none
+              ${theme === 'dark' ? 'text-white bg-quadvis-dark' : 'text-gray-500 bg-quadvis-light'}`}
           >
             <option value="">Select a subject</option>
             <option value="General Inquiry">General Inquiry</option>
@@ -109,7 +115,7 @@ const ContactForm = () => {
       </div>
       
       <div>
-        <label htmlFor="message" className="block text-gray-300 mb-1">Your Message *</label>
+        <label htmlFor="message" className={`block mb-1 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>Your Message *</label>
         <textarea
           id="message"
           name="message"
@@ -117,7 +123,8 @@ const ContactForm = () => {
           onChange={handleChange}
           required
           rows={5}
-          className="w-full rounded-md bg-quadvis-dark border border-gray-700 p-3 text-white focus:border-quadvis-orange focus:outline-none resize-none"
+          className={`w-full rounded-md border border-gray-700 p-3 focus:border-quadvis-orange focus:outline-none resize-none
+            ${theme === 'dark' ? 'text-white bg-quadvis-dark' : 'text-gray-500 bg-quadvis-light'}`}
         ></textarea>
       </div>
       
@@ -128,7 +135,7 @@ const ContactForm = () => {
           required
           className="h-4 w-4 border-gray-700 rounded"
         />
-        <label htmlFor="consent" className="ml-2 text-sm text-gray-300">
+        <label htmlFor="consent" className={`ml-2 text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>
           I agree to the processing of my personal data according to the Privacy Policy
         </label>
       </div>

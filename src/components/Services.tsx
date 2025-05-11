@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/hooks/use-theme";
 import { 
   Calendar, 
   Info, 
@@ -39,9 +40,11 @@ const services = [
 
 const Services = () => {
   const [activeService, setActiveService] = useState(0);
+  const { theme } = useTheme();
+  const isDarkTheme = theme === 'dark';
 
   return (
-    <section id="services" className="py-20 bg-quadvis-dark">
+    <section id="services" className={`py-20 ${theme === 'dark' ? 'bg-quadvis-dark' : 'bg-gray-50'}`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="section-title">Our <span className="gradient-text">Services</span></h2>
@@ -59,7 +62,8 @@ const Services = () => {
                   className={`py-2 px-4 rounded-full text-sm font-medium transition-all ${
                     activeService === index
                       ? 'bg-quadvis-orange text-white'
-                      : 'bg-transparent text-gray-400 hover:text-white border border-gray-700'
+                      : `${theme === 'dark' ? 'text-gray-400 hover:text-white border border-gray-700' : 
+                        'text-gray-400 hover:text-quadvis-orange border border-gray-700'} bg-transparent`
                   }`}
                   onClick={() => setActiveService(index)}
                 >
@@ -70,14 +74,14 @@ const Services = () => {
             
             <div className="quad-card">
               <div className="mb-4">{services[activeService].icon}</div>
-              <h3 className="text-2xl font-bold text-white mb-3">{services[activeService].title}</h3>
-              <p className="text-gray-300 mb-6">{services[activeService].description}</p>
+              <h3 className={`text-2xl font-bold mb-3 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>{services[activeService].title}</h3>
+              <p className={`mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>{services[activeService].description}</p>
               
               <ul className="space-y-3 mb-6">
                 {services[activeService].features.map((feature, index) => (
                   <li key={index} className="flex items-center gap-2">
                     <div className="h-1.5 w-1.5 rounded-full bg-quadvis-orange"></div>
-                    <span className="text-gray-300">{feature}</span>
+                    <span className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -93,8 +97,8 @@ const Services = () => {
             <div className="aspect-square rounded-xl overflow-hidden relative bg-gradient-to-br from-quadvis-blue/20 to-quadvis-orange/20 backdrop-blur-md">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <h3 className="text-3xl font-bold text-white mb-4">Custom Solutions for Every Need</h3>
-                  <p className="text-gray-300 mb-6">Our tailored approach ensures your specific challenges are met with precision and expertise.</p>
+                  <h3 className={`text-3xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Custom Solutions for Every Need</h3>
+                  <p className={`mb-6 px-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>Our tailored approach ensures your specific challenges are met with precision and expertise.</p>
                   <Button className="quad-button">Schedule a Consultation</Button>
                 </div>
               </div>

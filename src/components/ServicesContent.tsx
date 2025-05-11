@@ -1,6 +1,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/hooks/use-theme";
 
 const services = [
   {
@@ -72,21 +73,23 @@ const services = [
 ];
 
 const ServicesContent = () => {
+  const { theme } = useTheme();
+
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
         {services.map((service, index) => (
-          <div key={index} className="quad-card group">
+          <div key={index} className="quad-card group shadow-md">
             <div className="text-4xl mb-4">{service.icon}</div>
             <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
-            <p className="text-gray-300 mb-6">{service.description}</p>
+            <p className={`mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500 '}`}>{service.description}</p>
             
             <h4 className="font-semibold text-quadvis-orange mb-3">Key Features:</h4>
             <ul className="space-y-2 mb-6">
               {service.features.map((feature, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <div className="h-2 w-2 rounded-full bg-quadvis-orange mt-2"></div>
-                  <span className="text-gray-300">{feature}</span>
+                  <span className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-500 '}`}>{feature}</span>
                 </li>
               ))}
             </ul>
@@ -103,7 +106,7 @@ const ServicesContent = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
             <h3 className="text-2xl font-bold mb-4">Custom Technology Solutions</h3>
-            <p className="text-gray-300 mb-6">
+            <p className={`mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500 '}`}>
               Don't see exactly what you need? We specialize in custom solutions tailored to your specific business challenges and opportunities.
             </p>
             <Button className="quad-button">
@@ -112,7 +115,7 @@ const ServicesContent = () => {
           </div>
           
           <div>
-            <div className="bg-black/50 p-6 rounded-lg border border-quadvis-blue/30">
+            <div className={`p-6 rounded-lg border border-quadvis-blue/30 ${theme === 'dark' ? 'bg-black/50' : 'bg-white shadow-lg'}`}>
               <h4 className="text-xl font-semibold mb-4">Our Technology Stack</h4>
               <div className="flex flex-wrap gap-3">
                 {[
@@ -121,7 +124,8 @@ const ServicesContent = () => {
                   "Next.js", "PostgreSQL", "Docker", "Kubernetes", "TensorFlow", "Shopify",
                   "WooCommerce", "Stripe", "Firebase", "Supabase", "Flutter", "Swift"
                 ].map((tech, index) => (
-                  <span key={index} className="bg-quadvis-dark px-3 py-1 rounded-full text-sm border border-quadvis-blue/20">
+                  <span key={index} className={`px-3 py-1 rounded-full text-sm border border-quadvis-blue/20
+                   ${theme === 'dark' ? 'text-gray-300 bg-quadvis-dark' : 'bg-quadvis-light text-gray-700'}`}>
                     {tech}
                   </span>
                 ))}

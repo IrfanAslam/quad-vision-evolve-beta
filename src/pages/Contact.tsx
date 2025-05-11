@@ -4,22 +4,25 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import { Phone, Mail, Home, Globe } from "lucide-react";
+import { useTheme } from "@/hooks/use-theme";
 
 const Contact = () => {
+  const { theme } = useTheme();
+
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className="min-h-screen bg-quadvis-dark text-white">
+    <div className={`min-h-screen bg-quadvis-dark ${theme === 'dark' ? 'bg-gradient-to-b from-quadvis-dark to-black' : 'bg-gradient-to-b from-quadvis-light to-gray-300'}`}>
       <Navbar />
       
       <div className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact <span className="gradient-text">Us</span></h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl max-w-3xl mx-auto">
               Have a question or ready to start your next project? Get in touch with our team today.
             </p>
           </div>
@@ -35,8 +38,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold mb-1">Phone</h3>
-                      <p className="text-gray-300">+92 321 7741575</p>
-                      <p className="text-gray-300">+92 331 4585951</p>
+                      <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>+92 321 7741575</p>
+                      <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>+92 331 4585951</p>
                     </div>
                   </div>
                   
@@ -46,8 +49,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold mb-1">Email</h3>
-                      <p className="text-gray-300">info@quadvis-tech.com</p>
-                      <p className="text-gray-300">support@quadvis-tech.com</p>
+                      <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>info@quadvis-tech.com</p>
+                      <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>support@quadvis-tech.com</p>
                     </div>
                   </div>
                   
@@ -57,8 +60,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold mb-1">Office</h3>
-                      <p className="text-gray-300">722 D Block Johar Town</p>
-                      <p className="text-gray-300">Lahore, Pakistan 54782</p>
+                      <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>722 D Block Johar Town</p>
+                      <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>Lahore, Pakistan 54782</p>
                     </div>
                   </div>
                   
@@ -68,8 +71,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold mb-1">Working Hours</h3>
-                      <p className="text-gray-300">Monday - Friday: 9am - 6pm</p>
-                      <p className="text-gray-300">Saturday: 10am - 2pm</p>
+                      <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>Monday - Friday: 9am - 6pm</p>
+                      <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}  >Saturday: 10am - 2pm</p>
                     </div>
                   </div>
                 </div>
@@ -77,13 +80,14 @@ const Contact = () => {
               
               <div className="quad-card">
                 <h2 className="text-2xl font-bold mb-4">Follow Us</h2>
-                <p className="text-gray-300 mb-6">Stay connected with us on social media for updates and insights.</p>
+                <p className={`mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>Stay connected with us on social media for updates and insights.</p>
                 <div className="flex gap-4">
                   {['facebook', 'twitter', 'linkedin', 'instagram'].map((social) => (
                     <a 
                       key={social}
                       href={`#${social}`}
-                      className="h-12 w-12 rounded-full bg-quadvis-dark flex items-center justify-center hover:bg-quadvis-blue/20 transition-colors"
+                      className={`h-12 w-12 rounded-full flex items-center justify-center transition-colors
+                        ${theme === 'dark' ? 'bg-quadvis-dark hover:bg-quadvis-blue/20' : 'bg-quadvis-gray hover:bg-quadvis-gray/20'}`}
                     >
                       <span className="text-gray-400"></span>
                     </a>

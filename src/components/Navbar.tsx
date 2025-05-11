@@ -5,8 +5,10 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { useTheme } from "@/hooks/use-theme";
 
 const Navbar = () => {
+  const { theme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -91,7 +93,7 @@ const Navbar = () => {
                 className={`transition-colors relative text-lg font-medium ${
                   isActive(item.path) 
                     ? 'text-quadvis-orange' 
-                    : 'text-white hover:text-quadvis-orange'
+                    : `${theme === 'dark' ? 'text-white' : 'text-gray-700'} hover:text-quadvis-orange`
                 }`}
               >
                 {item.label}

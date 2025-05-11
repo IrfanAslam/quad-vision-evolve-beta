@@ -1,9 +1,12 @@
 
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/hooks/use-theme";
 
 const About = () => {
+  const { theme } = useTheme();  
+
   return (
-    <section id="about" className="py-20 bg-black relative overflow-hidden">
+    <section id="about" className={`py-20 relative overflow-hidden ${theme === 'dark' ? 'bg-gradient-to-b from-quadvis-dark to-black' : 'bg-gradient-to-b from-quadvis-light to-gray-300'}`}>
       {/* Background elements */}
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-quadvis-blue/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-quadvis-orange/10 rounded-full blur-3xl"></div>
@@ -18,15 +21,15 @@ const About = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
           <div className="order-2 lg:order-1">
-            <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
-            <p className="text-gray-300 mb-6">
+            <h3 className={`text-2xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Our Vision</h3>
+            <p className={`mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>
               At QuadVis Technologies, we envision a world where complex data becomes intuitive knowledge, where digital barriers dissolve, and where technology enhances human capability rather than complicating it.
             </p>
-            <p className="text-gray-300 mb-6">
+            <p className={`mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>
               Our name "QuadVis" represents the four pillars of our approach: Visualization, Innovation, Simplification, and Integration. These core principles guide everything we do, from product development to customer service.
             </p>
-            <h3 className="text-2xl font-bold text-white mb-4 mt-8">Our Mission</h3>
-            <p className="text-gray-300 mb-6">
+            <h3 className={`text-2xl font-bold mb-4 mt-8 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Our Mission</h3>
+            <p className={`mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>
               We're on a mission to democratize advanced data visualization and analytics, making powerful tools accessible to organizations of all sizes. By providing intuitive, powerful solutions, we enable our clients to uncover insights that drive genuine business transformation.
             </p>
             
@@ -41,7 +44,7 @@ const About = () => {
                   <div className="h-16 w-16 rounded-full bg-quadvis-blue/20 flex items-center justify-center mb-4">
                     <span className="text-2xl font-bold text-quadvis-blue">V</span>
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-2">Visualization</h4>
+                  <h4 className={`text-lg font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Visualization</h4>
                   <p className="text-sm text-gray-400">Transforming data into actionable visual insights</p>
                 </div>
                 
@@ -49,7 +52,7 @@ const About = () => {
                   <div className="h-16 w-16 rounded-full bg-quadvis-orange/20 flex items-center justify-center mb-4">
                     <span className="text-2xl font-bold text-quadvis-orange">I</span>
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-2">Innovation</h4>
+                  <h4 className={`text-lg font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Innovation</h4>
                   <p className="text-sm text-gray-400">Pioneering new approaches to digital challenges</p>
                 </div>
                 
@@ -57,7 +60,7 @@ const About = () => {
                   <div className="h-16 w-16 rounded-full bg-quadvis-orange/20 flex items-center justify-center mb-4">
                     <span className="text-2xl font-bold text-quadvis-orange">S</span>
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-2">Simplification</h4>
+                  <h4 className={`text-lg font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Simplification</h4>
                   <p className="text-sm text-gray-400">Making complex technology intuitive and accessible</p>
                 </div>
                 
@@ -65,7 +68,7 @@ const About = () => {
                   <div className="h-16 w-16 rounded-full bg-quadvis-blue/20 flex items-center justify-center mb-4">
                     <span className="text-2xl font-bold text-quadvis-blue">I</span>
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-2">Integration</h4>
+                  <h4 className={`text-lg font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Integration</h4>
                   <p className="text-sm text-gray-400">Seamlessly connecting systems and data sources</p>
                 </div>
               </div>
@@ -76,8 +79,8 @@ const About = () => {
         {/* Values Section */}
         <div className="mt-24">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-white mb-4">Our Core Values</h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <h2 className={`text-3xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Our Core Values</h2>
+            <p className={`max-w-2xl mx-auto ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
               These principles guide our team in delivering exceptional solutions and building lasting relationships with our clients.
             </p>
           </div>
@@ -105,7 +108,7 @@ const About = () => {
                 <div className="mb-4 h-12 w-12 rounded-full bg-gradient-to-br from-quadvis-blue to-quadvis-orange flex items-center justify-center">
                   <span className="font-bold text-white">{index + 1}</span>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
+                <h3 className={`text-xl font-bold mb-3 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>{value.title}</h3>
                 <p className="text-gray-400">{value.description}</p>
               </div>
             ))}

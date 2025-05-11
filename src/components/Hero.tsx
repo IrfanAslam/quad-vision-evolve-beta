@@ -3,16 +3,19 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useTheme } from "@/hooks/use-theme";
 
 const Hero = () => {
+    const { theme } = useTheme();
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden">
       {/* Gradient background effect */}
-      <div className="absolute inset-0 bg-gradient-to-b from-quadvis-dark to-black z-0"></div>
+      <div className={`absolute inset-0 z-0 ${theme === 'dark' ? 'bg-gradient-to-b from-quadvis-dark to-black' : 'bg-gradient-to-b from-quadvis-light to-gray-300'}`}></div>
       
       {/* Animated circles */}
       <motion.div 
-        className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-quadvis-blue/10 blur-3xl z-0"
+        className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-quadvis-orange/30 blur-3xl z-0"
         animate={{ 
           scale: [1, 1.2, 1],
           opacity: [0.5, 0.8, 0.5]
@@ -26,7 +29,7 @@ const Hero = () => {
       ></motion.div>
       
       <motion.div 
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-quadvis-orange/10 blur-3xl z-0"
+        className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-quadvis-blue/30 blur-3xl z-0"
         animate={{ 
           scale: [1, 1.3, 1],
           opacity: [0.3, 0.6, 0.3]
@@ -43,7 +46,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"
+            className={`text-4xl md:text-6xl font-bold mb-6 leading-tight ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -53,7 +56,7 @@ const Hero = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto"
+            className={`text-lg md:text-xl mb-10 max-w-3xl mx-auto ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3 }}
@@ -99,7 +102,7 @@ const Hero = () => {
                 >
                   {stat.number}
                 </motion.div>
-                <div className="text-sm text-gray-400">{stat.text}</div>
+                <div className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-800'}`}>{stat.text}</div>
               </motion.div>
             ))}
           </div>

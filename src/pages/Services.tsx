@@ -9,6 +9,7 @@ import PageTransition from "@/components/PageTransition";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTheme } from "@/hooks/use-theme";
 
 // Basic 3D cube model component
 const CubeModel = () => {
@@ -51,6 +52,8 @@ const WebsiteModel = () => {
 };
 
 const Services = () => {
+  const { theme } = useTheme();
+
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -58,7 +61,7 @@ const Services = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-quadvis-dark text-white">
+      <div className={`min-h-screen  ${theme === 'dark' ? 'bg-gradient-to-b from-quadvis-dark to-black' : 'bg-gradient-to-b from-quadvis-light to-gray-300'}`}>
         <Navbar />
         
         <div className="pt-24 pb-16">
@@ -70,7 +73,7 @@ const Services = () => {
               transition={{ duration: 0.5 }}
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-6">Our <span className="gradient-text">Technology Stacks</span></h1>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl max-w-3xl mx-auto">
                 Cutting-edge solutions powered by the latest technologies to transform your vision into reality.
               </p>
             </motion.div>

@@ -1,9 +1,12 @@
 
 import { Link } from "react-router-dom";
+import { useTheme } from "@/hooks/use-theme";
 
 const Footer = () => {
+  const { theme } = useTheme();
+
   return (
-    <footer className="bg-black pt-16 pb-8">
+    <footer className={`pt-16 pb-8 ${theme === 'dark' ? 'bg-black' : 'bg-quadvis-light'}`}>
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
           <div>
@@ -13,7 +16,7 @@ const Footer = () => {
                 alt="QuadVis Logo" 
                 className="h-10 w-auto" 
               />
-              <span className="font-bold text-xl text-white">QuadVis</span>
+              <span className={`font-bold text-xl ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>QuadVis</span>
             </div>
             <p className="text-gray-400 mb-6">
               Four Fold Innovation, One Digital Vision. Transforming data into actionable insights through advanced visualization technology.
@@ -23,7 +26,8 @@ const Footer = () => {
                 <a 
                   key={social}
                   href={`#${social}`}
-                  className="h-10 w-10 rounded-full bg-quadvis-dark flex items-center justify-center hover:bg-quadvis-blue/20 transition-colors"
+                  className={`h-10 w-10 rounded-full flex items-center justify-center transition-colors 
+                    ${theme === 'dark' ? 'bg-quadvis-dark hover:bg-quadvis-blue/20' : 'bg-quadvis-gray hover:bg-quadvis-gray/20'}`}
                 >
                   <span className="text-gray-400"></span>
                 </a>
@@ -32,7 +36,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-white font-bold mb-6">Quick Links</h3>
+            <h3 className={`font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Quick Links</h3>
             <ul className="space-y-4">
               {[
                 { label: 'Home', path: '/' },
@@ -54,7 +58,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-white font-bold mb-6">Services</h3>
+            <h3 className={`font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Services</h3>
             <ul className="space-y-4">
               {[
                 'Web Development',
@@ -77,7 +81,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-white font-bold mb-6">Contact Us</h3>
+            <h3 className={`font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Contact Us</h3>
             <ul className="space-y-4 text-gray-400">
               <li>
                 <strong className="text-quadvis-gray">Email:</strong><br />

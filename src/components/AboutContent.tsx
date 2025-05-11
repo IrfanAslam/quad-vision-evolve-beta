@@ -1,7 +1,10 @@
 
 import { motion } from "framer-motion";
+import { useTheme } from "@/hooks/use-theme";
 
 const AboutContent = () => {
+  const { theme } = useTheme();
+
   return (
     <div>
       <div className="mb-20">
@@ -23,7 +26,7 @@ const AboutContent = () => {
           ].map((member, index) => (
             <motion.div 
               key={index} 
-              className="quad-card text-center"
+              className="quad-card text-center shadow-lg border border-quadvis-blue/30"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
@@ -35,7 +38,7 @@ const AboutContent = () => {
               </div>
               <h3 className="text-2xl font-bold mb-1">{member.name}</h3>
               <p className="text-quadvis-orange mb-3 text-lg">{member.position}</p>
-              <p className="text-gray-300 text-lg">{member.bio}</p>
+              <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>{member.bio}</p>
             </motion.div>
           ))}
         </div>
@@ -47,20 +50,20 @@ const AboutContent = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div>
               <h3 className="text-3xl font-bold mb-4">What We Do</h3>
-              <p className="text-xl text-gray-300 mb-4">
+              <p className={`text-xl mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>
                 At QuadVis Technologies, we create digital solutions that solve real-world problems. We bridge the gap between complex technology and human needs, delivering products that are both innovative and intuitive.
               </p>
-              <p className="text-xl text-gray-300">
+              <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>
                 Our services span the full spectrum of digital development, from web and e-commerce solutions to cutting-edge game development and immersive XR experiences. Whatever your digital challenge, we have the expertise to meet it.
               </p>
             </div>
             
             <div>
               <h3 className="text-3xl font-bold mb-4">Why We Do It</h3>
-              <p className="text-xl text-gray-300 mb-4">
+              <p className={`text-xl mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>
                 We believe that technology should enhance human experience, not complicate it. Our mission is to democratize access to advanced digital solutions, making powerful tools and experiences available to organizations of all sizes.
               </p>
-              <p className="text-xl text-gray-300">
+              <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>
                 We're passionate about pushing the boundaries of what's possible in digital spaces while ensuring that our solutions remain accessible, usable, and valuable to the people who interact with them.
               </p>
             </div>
@@ -102,7 +105,7 @@ const AboutContent = () => {
             >
               <div className="text-4xl font-bold text-quadvis-orange mb-2">{step.number}</div>
               <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-              <p className="text-lg text-gray-300">{step.description}</p>
+              <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>{step.description}</p>
             </motion.div>
           ))}
         </div>

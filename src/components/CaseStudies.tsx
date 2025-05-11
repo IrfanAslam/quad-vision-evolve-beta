@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import { useTheme } from "@/hooks/use-theme";
 
 const caseStudies = [
   {
@@ -36,9 +37,10 @@ const caseStudies = [
 
 const CaseStudies = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const { theme } = useTheme();
 
   return (
-    <section id="case-studies" className="py-20 bg-quadvis-dark relative">
+    <section id="case-studies" className={`py-20 relative ${theme === 'dark' ? 'bg-gradient-to-b from-quadvis-dark to-black' : 'bg-gradient-to-b from-quadvis-light to-gray-300'}`}>
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMxLjIgMCAyLjEuOSAyLjEgMi4xIDAgMS4yLS45IDIuMS0yLjEgMi4xLTEuMiAwLTIuMS0uOS0yLjEtMi4xIDAtMS4yLjktMi4xIDIuMS0yLjF6IiBmaWxsLW9wYWNpdHk9Ii41IiBmaWxsPSIjNjc4IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48L2c+PC9zdmc+')] opacity-[0.03] z-0"></div>
       
       <div className="container mx-auto px-4 relative z-10">
@@ -57,7 +59,7 @@ const CaseStudies = () => {
                 className={`px-5 py-2.5 whitespace-nowrap rounded-full transition-all ${
                   activeTab === index
                     ? 'bg-quadvis-orange text-white'
-                    : 'bg-quadvis-dark border border-gray-700 text-gray-300 hover:border-gray-500'
+                    : `border border-gray-700 hover:border-gray-500 ${theme === 'dark' ? 'bg-quadvis-dark text-gray-300' : 'bg-quadvis-light text-gray-700'}`
                 }`}
                 onClick={() => setActiveTab(index)}
               >
@@ -73,28 +75,28 @@ const CaseStudies = () => {
               <div className="inline-block px-3 py-1 bg-quadvis-blue/20 text-quadvis-blue rounded-full text-sm mb-4">
                 {caseStudies[activeTab].client}
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              <h3 className={`text-2xl md:text-3xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
                 {caseStudies[activeTab].title}
               </h3>
-              <p className="text-gray-300 mb-6">
+              <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`} mb-6>
                 {caseStudies[activeTab].description}
               </p>
               
-              <h4 className="text-lg font-semibold text-white mb-3">Key Impact</h4>
+              <h4 className={`text-lg font-semibold mb-3 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Key Impact</h4>
               <ul className="space-y-2 mb-6">
                 {caseStudies[activeTab].impact.map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <span className="h-6 w-6 rounded-full bg-quadvis-orange/20 flex items-center justify-center">
                       <ChevronRight className="h-4 w-4 text-quadvis-orange" />
                     </span>
-                    <span className="text-gray-300">{item}</span>
+                    <span className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>{item}</span>
                   </li>
                 ))}
               </ul>
               
               <div className="flex flex-wrap gap-2 mb-6">
                 {caseStudies[activeTab].tags.map((tag, i) => (
-                  <span key={i} className="px-3 py-1 bg-quadvis-dark border border-gray-700 rounded-full text-sm text-gray-300">
+                  <span key={i} className={`px-3 py-1 border border-gray-700 rounded-full text-sm ${theme === 'dark' ? 'bg-quadvis-dark text-gray-300' : 'bg-quadvis-light text-gray-700'}`}>
                     {tag}
                   </span>
                 ))}
@@ -121,7 +123,8 @@ const CaseStudies = () => {
                 {[1, 2, 3, 4].map((i) => (
                   <div 
                     key={i}
-                    className="aspect-video rounded-md bg-gradient-to-br from-gray-800 to-gray-900 hover:opacity-80 cursor-pointer transition-opacity"
+                    className={`aspect-video rounded-md hover:opacity-80 cursor-pointer transition-opacity 
+                      ${theme === 'dark' ? 'bg-gradient-to-br from-gray-800 to-gray-900' : 'bg-gradient-to-br from-quadvis-light/10 to-quadvis-gray/30'}`}
                   ></div>
                 ))}
               </div>

@@ -3,10 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Rocket, Zap, Target } from "lucide-react";
+import { useTheme } from "@/hooks/use-theme";
 
 const CallToAction = () => {
+  const { theme } = useTheme();
+
   return (
-    <section className="py-16 bg-quadvis-dark relative overflow-hidden">
+    <section className={`py-16 relative overflow-hidden ${theme === 'dark' ? 'bg-quadvis-dark' : 'bg-quadvis-light'}`}>
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-r from-quadvis-blue/20 to-quadvis-orange/20 opacity-30"></div>
       
@@ -17,11 +20,12 @@ const CallToAction = () => {
         transition={{ duration: 0.7 }}
         viewport={{ once: true, margin: "-100px" }}
       >
-        <div className="max-w-5xl mx-auto bg-gradient-to-b from-quadvis-dark to-black rounded-2xl p-4 md:p-10 border border-quadvis-blue/30">
+        <div className={`max-w-5xl mx-auto rounded-2xl p-4 md:p-10 border border-quadvis-blue/30
+          ${theme === 'dark' ? 'bg-gradient-to-b from-quadvis-dark to-black' : 'bg-gradient-to-b from-quadvis-light to-white shadow-lg'}`}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div>
-              <motion.h2 
-                className="text-3xl md:text-4xl font-bold text-white mb-4"
+               <motion.h2 
+                className={`text-3xl md:text-4xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
@@ -30,7 +34,7 @@ const CallToAction = () => {
                 Ready to Transform Your <span className="gradient-text">Digital Experience</span>?
               </motion.h2>
               <motion.p 
-                className="text-gray-300 mb-8"
+                className={`mb-8 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
@@ -53,20 +57,20 @@ const CallToAction = () => {
                   </Button>
                 </Link>
                 <Link to="/contact">
-                  <Button variant="outline" className="quad-button-outline">Contact Us</Button>
+                  <Button variant="outline" className="quad-button-outline shadow drop-shadow-md shadow-zinc-100">Contact Us</Button>
                 </Link>
               </motion.div>
             </div>
             
             <div className="relative">
               <motion.div 
-                className="quad-card p-6"
+                className={`quad-card p-6 shadow-lg shadow-quadvis-blue/20 ${theme === 'dark' ? 'z-0' : 'z-10 relative'}`}
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.6, type: "spring", staggerChildren: 0.1 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-xl font-bold mb-4 text-white">Why Choose QuadVis</h3>
+                <h3 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Why Choose QuadVis</h3>
                 
                 {[
                   {
@@ -97,8 +101,8 @@ const CallToAction = () => {
                       {item.icon}
                     </div>
                     <div>
-                      <h4 className="font-medium text-white">{item.title}</h4>
-                      <p className="text-sm text-gray-400">{item.description}</p>
+                      <h4 className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}>{item.title}</h4>
+                      <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>{item.description}</p>
                     </div>
                   </motion.div>
                 ))}

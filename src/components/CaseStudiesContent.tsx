@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Clock, Users, PieChart } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTheme } from "@/hooks/use-theme";
 
 const caseStudies = [
   {
@@ -57,6 +58,7 @@ const caseStudies = [
 
 const CaseStudiesContent = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const { theme } = useTheme();
 
   return (
     <>
@@ -73,7 +75,7 @@ const CaseStudiesContent = () => {
               className={`px-5 py-3 whitespace-nowrap rounded-full transition-all text-lg ${
                 activeTab === index
                   ? 'bg-quadvis-orange text-white'
-                  : 'bg-quadvis-dark border border-gray-700 text-gray-300 hover:border-gray-500'
+                  : `bg-quadvis-dark border border-gray-700 text-gray-300 hover:border-gray-500 ${theme === 'dark' ? 'bg-quadvis-dark text-gray-300' : 'bg-quadvis-light text-gray-700'}`
               }`}
               onClick={() => setActiveTab(index)}
             >
@@ -94,48 +96,49 @@ const CaseStudiesContent = () => {
             <div className="inline-block px-4 py-1.5 bg-quadvis-blue/20 text-quadvis-blue rounded-full text-lg mb-4">
               {caseStudies[activeTab].client}
             </div>
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-5">
+            <h3 className="text-3xl md:text-4xl font-bold mb-5">
               {caseStudies[activeTab].title}
             </h3>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className={`text-xl mb-8 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>
               {caseStudies[activeTab].description}
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               {caseStudies[activeTab].metrics.map((metric, idx) => (
-                <div key={idx} className="bg-black/40 p-5 rounded-lg border border-quadvis-blue/20 text-center">
+                <div key={idx} className={`p-5 rounded-lg border shadow border-quadvis-blue/20 text-center 
+                ${theme === 'dark' ? 'bg-black/40' : 'bg-black/10'}`}>
                   <div className="w-12 h-12 flex items-center justify-center mx-auto mb-3">
                     {metric.icon}
                   </div>
-                  <div className="text-2xl font-bold text-white mb-1">{metric.value}</div>
-                  <div className="text-gray-400">{metric.label}</div>
+                  <div className="text-2xl font-bold mb-1">{metric.value}</div>
+                  <div className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>{metric.label}</div>
                 </div>
               ))}
             </div>
             
-            <h4 className="text-2xl font-semibold text-white mb-4">Key Impact</h4>
+            <h4 className="text-2xl font-semibold mb-4">Key Impact</h4>
             <ul className="space-y-3 mb-8">
               {caseStudies[activeTab].impact.map((item, i) => (
                 <li key={i} className="flex items-center gap-3">
                   <span className="h-7 w-7 rounded-full bg-quadvis-orange/20 flex items-center justify-center">
                     <ChevronRight className="h-5 w-5 text-quadvis-orange" />
                   </span>
-                  <span className="text-xl text-gray-300">{item}</span>
+                  <span className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>{item}</span>
                 </li>
               ))}
             </ul>
             
             <div className="flex flex-wrap gap-2 mb-8">
               {caseStudies[activeTab].tags.map((tag, i) => (
-                <span key={i} className="px-4 py-1.5 bg-quadvis-dark border border-gray-700 rounded-full text-lg text-gray-300">
+                <span key={i} className={`px-4 py-1.5 border border-gray-700 rounded-full text-lg ${theme === 'dark' ? 'bg-quadvis-dark text-gray-300' : 'bg-quadvis-light text-gray-600'}`}>
                   {tag}
                 </span>
               ))}
             </div>
             
-            <Button className="quad-button text-lg">
+            {/* <Button className="quad-button text-lg">
               Read Full Case Study
-            </Button>
+            </Button> */}
           </div>
         </div>
       </motion.div>
@@ -170,7 +173,7 @@ const CaseStudiesContent = () => {
               <div className="aspect-video bg-gradient-to-br from-quadvis-blue/20 to-quadvis-orange/20 rounded-md mb-4"></div>
               <div className="text-lg text-quadvis-orange mb-2">{project.client}</div>
               <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-              <p className="text-lg text-gray-300 mb-4">{project.description}</p>
+              <p className={`text-lg mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>{project.description}</p>
               <Button variant="link" className="text-quadvis-orange p-0 flex items-center hover:text-quadvis-orange/80 transition-colors text-lg">
                 View details
                 <ChevronRight size={18} className="ml-1" />

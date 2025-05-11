@@ -42,7 +42,7 @@ const CoreFeatures = () => {
     <section className={`py-24 transition-colors duration-300 ${theme === 'dark' ? 'bg-quadvis-dark/50' : 'bg-gray-50'}`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="section-title">Core <span className="gradient-text">Capabilities</span></h2>
+          <h2 className={`${theme === 'dark' ? 'text-quadvis-light' : 'text-quadvis-blue'} section-title`}>Core <span className="gradient-text">Capabilities</span></h2>
           <p className="section-subtitle">
             Delivering exceptional digital experiences through our core technology pillars
           </p>
@@ -59,7 +59,7 @@ const CoreFeatures = () => {
               }`}
             >
               <div className="mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
+              <h3 className={`text-xl font-bold mb-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{feature.title}</h3>
               <p className={`mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
                 {feature.description}
               </p>
