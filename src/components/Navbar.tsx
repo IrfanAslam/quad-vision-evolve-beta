@@ -56,7 +56,7 @@ const Navbar = () => {
           >
             {/* First try with proper image */}
             <img 
-              src="/src/assets/logo-new.png" 
+              src="/logo-new.png" 
               alt="QuadVis Logo"
               className="h-12 w-auto" 
               onError={(e) => {
