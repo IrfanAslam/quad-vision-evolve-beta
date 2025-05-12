@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/use-theme";
 
 const About = () => {
+  //theme provider
+  // This hook provides the current theme and a function to toggle it
   const { theme } = useTheme();  
 
   return (
