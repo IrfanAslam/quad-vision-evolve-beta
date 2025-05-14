@@ -18,8 +18,8 @@ const AboutContent = () => {
               image: "/placeholder.svg"
             },
             {
-              name: "Suleiman Raza",
-              position: "Creative Director & QA Expert",
+              name: "Syed Naqvi",
+              position: "Co-Founder & CTO",
               bio: "Multifaceted creative professional with expertise in quality assurance, content creation, and user experience design. Passionate about delivering exceptional digital experiences that delight users.",
               image: "/placeholder.svg"
             }
